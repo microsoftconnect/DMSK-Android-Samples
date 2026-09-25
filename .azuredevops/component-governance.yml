@@ -1,0 +1,47 @@
+trigger:
+  branches:
+    include:
+      - main
+      - master
+  paths:
+    include:
+      - '**/*.gradle'
+      - '**/*.gradle.kts'
+      - '**/gradle.lockfile'
+      - '**/pom.xml'
+
+pr:
+  branches:
+    include:
+      - main
+      - master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - checkout: self
+    fetchDepth: 1
+
+  - task: JavaToolInstaller@0
+    displayName: 'Install Java 17'
+    inputs:
+      versionSpec: '17'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'PreInstalled'
+
+  # Optional: resolve Gradle dependencies for deeper scanning
+  - script: |
+      if [ -f "gradlew" ]; then
+        chmod +x gradlew
+        ./gradlew dependencies --no-daemon || true
+      fi
+    displayName: 'Resolve Gradle Dependencies'
+
+  - task: ComponentGovernanceComponentDetection@0
+    displayName: 'Component Governance Detection'
+    inputs:
+      scanType: 'Register'
+      verbosity: 'Verbose'
+      alertWarningLevel: 'High'
+      failOnAlert: false
