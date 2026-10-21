@@ -1,0 +1,105 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingHorizontal="16dp"
+              android:paddingVertical="16dp"
+              android:background="@android:color/background_light">
+
+	<TextView
+		android:id="@+id/title"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="Second Fragment"
+		android:textSize="18sp"
+		android:textStyle="bold"
+		android:textColor="?android:attr/textColorPrimary"
+		android:layout_marginBottom="16dp"
+		android:gravity="center"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
+
+	<!-- Disable second field button -->
+	<Button
+		android:id="@+id/disable"
+		android:layout_width="0dp"
+		android:layout_height="48dp"
+		android:padding="12dp"
+		android:text="Disable Second Field"
+		android:textSize="16sp"
+		android:layout_marginTop="16dp"
+		android:layout_marginBottom="16dp"
+		android:background="?android:attr/selectableItemBackground"
+		app:layout_constraintTop_toBottomOf="@+id/title"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
+
+	<!-- First speech-enabled EditText -->
+	<TextView
+		android:id="@+id/foo_label"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="Foo Field"
+		android:textSize="14sp"
+		android:textColor="?android:attr/textColorSecondary"
+		android:layout_marginTop="16dp"
+		android:layout_marginBottom="4dp"
+		app:layout_constraintTop_toBottomOf="@+id/disable"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
+
+	<EditText
+		android:id="@+id/foo"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:singleLine="true"
+		android:imeOptions="flagNoExtractUi"
+		android:hint="Enter foo-related text"
+		android:padding="12dp"
+		android:textSize="16sp"
+		android:background="@android:drawable/edit_text"
+		android:layout_marginTop="4dp"
+		android:layout_marginBottom="16dp"
+		app:layout_constraintTop_toBottomOf="@+id/foo_label"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
+
+	<!-- Second speech-enabled EditText -->
+	<TextView
+		android:id="@+id/bar_label"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:text="Bar Field"
+		android:textSize="14sp"
+		android:textColor="?android:attr/textColorSecondary"
+		android:layout_marginTop="16dp"
+		android:layout_marginBottom="4dp"
+		app:layout_constraintTop_toBottomOf="@+id/foo"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		/>
+
+	<EditText
+		android:id="@+id/bar"
+		android:minLines="6"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:gravity="top"
+		android:imeOptions="flagNoExtractUi"
+		android:hint="Enter bar-related text (multiline)"
+		android:padding="12dp"
+		android:textSize="16sp"
+		android:background="@android:drawable/edit_text"
+		android:layout_marginTop="4dp"
+		app:layout_constraintTop_toBottomOf="@+id/bar_label"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

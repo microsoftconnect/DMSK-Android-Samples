@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+   myspeechenabledactivity.xml
+   DM_SpeechKitSample
+
+  Copyright 2010-2026 Nuance Communications, Inc. All rights reserved.
+-->
+
+<!-- Layout of the speech-enabled Activity  -->
+
+<!-- VuiController integration: this element is the root of the view hierarchy  -->
+<com.nuance.speechanywhere.VuiController
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:id="@+id/vuicontroller"
+	android:tag="topic:General Medicine"
+	android:fitsSystemWindows="false">
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:fillViewport="true"
+		android:clipToPadding="false">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+		              android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:paddingStart="16dp"
+		              android:paddingEnd="16dp"
+		              android:clipToPadding="false">
+
+			<!-- Toggle recording button -->
+			<Button
+				android:id="@+id/record"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="10dp"
+				android:text="Record"
+				android:onClick="toggleRecording"
+				android:layout_marginTop="16dp"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				/>
+
+			<!-- First speech-enabled EditText -->
+			<EditText
+				android:id="@+id/oneline"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:singleLine="true"
+				android:imeOptions="flagNoExtractUi"
+				android:layout_marginTop="24dp"
+				android:hint="Single line input"
+				android:padding="12dp"
+				android:textSize="16sp"
+				android:background="@android:drawable/edit_text"
+				app:layout_constraintTop_toBottomOf="@+id/record"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				/>
+
+			<!-- Second speech-enabled EditText -->
+			<EditText
+				android:id="@+id/multiline"
+				android:minLines="6"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:gravity="top"
+				android:imeOptions="flagNoExtractUi"
+				android:layout_marginTop="16dp"
+				android:layout_marginBottom="16dp"
+				android:hint="Multi-line input"
+				android:padding="12dp"
+				android:textSize="16sp"
+				android:background="@android:drawable/edit_text"
+				app:layout_constraintTop_toBottomOf="@+id/oneline"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
+				/>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</ScrollView>
+</com.nuance.speechanywhere.VuiController>

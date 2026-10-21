@@ -1,0 +1,94 @@
+buildscript {
+    ext.kotlin_version = "2.1.21"
+    repositories {
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:compose-compiler-gradle-plugin:$kotlin_version"
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
+android {
+
+    defaultConfig {
+        applicationId "com.nuance.dm_speechkit.composeuisample"
+        compileSdk = 37
+        minSdkVersion 26
+        targetSdkVersion 37
+        versionCode 7
+        versionName "7.0.3.1"
+    }
+
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+        }
+        debug {
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    namespace 'com.nuance.dm_speechkit.composeuisample'
+
+    repositories {
+        mavenCentral()
+        google()
+    }
+
+    buildFeatures {
+        compose true
+        viewBinding true
+    }
+
+    packaging {
+        dex {
+            useLegacyPackaging false
+        }
+    }
+}
+
+apply from: '../../download-speechkit-aar.gradle'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation 'androidx.core:core-ktx:1.19.0'
+    implementation 'com.google.android.material:material:1.14.0'
+    implementation 'androidx.activity:activity:1.13.0'
+    implementation 'androidx.fragment:fragment-ktx:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+
+    implementation files(project.ext.speechKitAarFile)
+
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+    implementation("com.squareup.okhttp3:okhttp-urlconnection")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    implementation platform('androidx.compose:compose-bom:2024.06.00')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.activity:activity-compose'
+    implementation 'androidx.compose.ui:ui-viewbinding'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+}
+

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+   activity_speechkit_customsample.xml
+   DM_SpeechKitCustomSample
+
+  Copyright 2010-2026 Nuance Communications, Inc. All rights reserved.
+-->
+
+<!-- Layout of the login Activity - Updated for Android 16 edge-to-edge support with ConstraintLayout -->
+
+<androidx.constraintlayout.widget.ConstraintLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false"
+    android:background="@android:color/background_light"
+    android:paddingHorizontal="24dp">
+
+    <!-- This is the EditText where the user can type their username -->
+    <EditText
+        android:id="@+id/login"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        android:maxLength="20"
+        android:hint="User ID"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:background="@android:drawable/edit_text"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/instructions_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        app:layout_constraintWidth_default="spread" />
+
+    <!-- Instructions text -->
+    <TextView
+        android:id="@+id/instructions_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Enter your user ID and press Enter to continue"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toBottomOf="@+id/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintWidth_default="spread" />
+
+    <!-- Guideline for horizontal centering -->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_horizontal_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
