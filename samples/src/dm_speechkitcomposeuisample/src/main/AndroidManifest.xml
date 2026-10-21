@@ -27,19 +27,19 @@
         <activity
             android:name="com.nuance.dm_speechkit.composeuisample.reports.ComposeUIAndroidViewBindingActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:windowSoftInputMode="stateUnchanged|adjustResize"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <activity
             android:name="com.nuance.dm_speechkit.composeuisample.reports.ComposeUIAndroidViewWrapperActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:windowSoftInputMode="stateUnchanged|adjustResize"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
 
         <activity
             android:name="com.nuance.dm_speechkit.composeuisample.reports.PureComposeCustomVCReportActivity"
             android:configChanges="orientation|screenSize|keyboard|keyboardHidden"
-            android:windowSoftInputMode="stateUnchanged|adjustResize"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false" />
     </application>
 

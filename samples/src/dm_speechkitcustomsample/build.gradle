@@ -22,7 +22,7 @@ android {
         minSdkVersion 26
         targetSdkVersion 37
         versionCode 7
-        versionName "7.0.3.1"
+        versionName "7.0.16.1"
     }
     buildTypes {
         release {
@@ -66,4 +66,3 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor")
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 }
-

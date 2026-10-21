@@ -24,7 +24,6 @@
 		<!-- This is a speech-enabled activity -->
 		<activity
 			android:name="com.nuance.dm_speechkit.sample.MySpeechEnabledActivity"
-			android:windowSoftInputMode="stateUnchanged"
 			android:label="Dragon Medical SpeechKit sample"
 			android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
 

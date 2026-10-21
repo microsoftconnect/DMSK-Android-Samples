@@ -4,6 +4,8 @@ This repository contains only Android SDK sample applications. The repository th
 
 ## SDK version and compatibility
 
+The sample sources are synchronized with the Android SDK package **7.0.16.1**.
+
 All samples use the shared [SDK download script](samples/download-speechkit-aar.gradle) to download `NuanceSpeechAnywhere.aar` from the `main` branch of [DMSK-Android](https://github.com/microsoftconnect/DMSK-Android/tree/main). They use the latest Android SDK build available on that branch when first downloaded, rather than a pinned release or commit.
 
 The AAR is cached in each sample project's `.gradle/downloaded-sdk/NuanceSpeechAnywhere-main.aar` file. To pick up a newer SDK build from `main`, delete that cached file in the relevant sample project and rebuild. A normal rebuild reuses the cached SDK.

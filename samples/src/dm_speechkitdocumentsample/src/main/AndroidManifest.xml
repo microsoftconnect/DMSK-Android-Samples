@@ -19,11 +19,9 @@
 		<!-- This is a speech-enabled activity -->
 		<activity
 			android:name="com.nuance.dm_speechkit.documentsample.MySpeechEnabledActivity"
-			android:windowSoftInputMode="stateUnchanged"
 			android:configChanges="orientation|screenSize|keyboard|keyboardHidden" />
 
 	</application>
 
 
 </manifest>
-
