@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- 
+   myspeechenabledactivity.xml
+   DM_SpeechKitDocumentSample
+
+  Copyright 2010-2026 Nuance Communications, Inc. All rights reserved.
+-->
+
+<!-- Layout of the speech-enabled Activity - Updated for Android 16 edge-to-edge support -->
+
+<!-- VuiController integration: this element is the root of the view hierarchy  -->
+<com.nuance.speechanywhere.VuiController
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:id="@+id/vuicontroller"
+	android:tag="topic:General Medicine"
+	android:fitsSystemWindows="false"
+	android:background="@android:color/background_light">
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.constraintlayout.widget.ConstraintLayout
+		              android:layout_width="match_parent"
+		              android:layout_height="wrap_content"
+		              android:paddingHorizontal="16dp"
+		              android:paddingTop="0dp"
+		              android:paddingBottom="16dp">
+
+			<!-- Toggle recording button -->
+			<Button
+				android:id="@+id/record"
+				android:layout_width="0dp"
+				android:layout_height="48dp"
+				android:padding="12dp"
+				android:layout_marginEnd="8dp"
+				android:layout_marginTop="32dp"
+				android:text="Record"
+				android:textSize="16sp"
+				android:onClick="toggleRecording"
+				android:background="?android:attr/selectableItemBackground"
+				app:layout_constraintTop_toTopOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toStartOf="@+id/toggleBetweenDocs"
+				app:layout_constraintHorizontal_weight="1"
+				/>
+
+			<Button
+				android:id="@+id/toggleBetweenDocs"
+				android:layout_width="0dp"
+				android:layout_height="48dp"
+				android:padding="12dp"
+				android:layout_marginStart="8dp"
+				android:onClick="toggleBetweenDocs"
+				android:text="Toggle between docs"
+				android:textSize="16sp"
+				android:background="?android:attr/selectableItemBackground"
+				app:layout_constraintTop_toTopOf="@+id/record"
+				app:layout_constraintStart_toEndOf="@+id/record"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintHorizontal_weight="1"
+				/>
+
+			<TextView
+				android:id="@+id/openDocument"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dp"
+				android:textSize="16sp"
+				android:textColor="?android:attr/textColorPrimary"
+				android:background="@android:color/background_light"
+				android:padding="8dp"
+				app:layout_constraintTop_toBottomOf="@+id/record"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				/>
+
+			<!-- First speech-enabled EditText -->
+			<EditText
+				android:id="@+id/oneline"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:singleLine="true"
+				android:imeOptions="flagNoExtractUi"
+				android:hint="Single line input"
+				android:padding="12dp"
+				android:textSize="16sp"
+				android:background="@android:drawable/edit_text"
+				android:layout_marginTop="16dp"
+				app:layout_constraintTop_toBottomOf="@+id/openDocument"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				/>
+
+			<!-- Second speech-enabled EditText -->
+			<EditText
+				android:id="@+id/multiline"
+				android:minLines="6"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:gravity="top"
+				android:imeOptions="flagNoExtractUi"
+				android:hint="Multi-line input"
+				android:padding="12dp"
+				android:textSize="16sp"
+				android:background="@android:drawable/edit_text"
+				android:layout_marginTop="16dp"
+				android:layout_marginBottom="16dp"
+				app:layout_constraintTop_toBottomOf="@+id/oneline"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintBottom_toBottomOf="parent"
+				/>
+
+		</androidx.constraintlayout.widget.ConstraintLayout>
+	</ScrollView>
+</com.nuance.speechanywhere.VuiController>

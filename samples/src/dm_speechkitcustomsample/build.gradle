@@ -1,0 +1,68 @@
+buildscript {
+    ext.kotlin_version = "2.1.21"
+    repositories {
+        mavenCentral()
+        maven {
+            url 'https://maven.google.com/'
+            name 'Google'
+        }
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:9.2.0'
+    }
+}
+
+apply plugin: 'com.android.application'
+
+android {
+    defaultConfig {
+        applicationId "com.nuance.dm_speechkit.customsample"
+        compileSdk = 37
+        minSdkVersion 26
+        targetSdkVersion 37
+        versionCode 7
+        versionName "7.0.16.1"
+    }
+    buildTypes {
+        release {
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility(JavaVersion.VERSION_17)
+        targetCompatibility(JavaVersion.VERSION_17)
+    }
+    productFlavors {
+    }
+    repositories {
+        mavenCentral()
+        google()
+    }
+    namespace 'com.nuance.dm_speechkit.customsample'
+    buildFeatures {
+        buildConfig true
+    }
+}
+
+apply from: '../../download-speechkit-aar.gradle'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'androidx.appcompat:appcompat:1.8.0'
+    implementation files(project.ext.speechKitAarFile)
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.2'
+    implementation 'com.google.android.material:material:1.14.0'
+    implementation 'androidx.core:core-ktx:1.19.0'
+    implementation 'androidx.activity:activity:1.13.0'
+    implementation 'androidx.fragment:fragment-ktx:1.9.0'
+    
+    implementation(platform("com.squareup.okhttp3:okhttp-bom:4.12.0"))
+
+    // define any required OkHttp artifacts without version
+    implementation("com.squareup.okhttp3:okhttp-urlconnection")
+    implementation("com.squareup.okhttp3:logging-interceptor")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+}

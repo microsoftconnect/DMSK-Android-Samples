@@ -1,0 +1,39 @@
+def speechKitAarRef = 'main'
+def speechKitAarUrl = "https://raw.githubusercontent.com/microsoftconnect/DMSK-Android/${speechKitAarRef}/NuanceSpeechAnywhere/NuanceSpeechAnywhere.aar"
+def downloadedSpeechKitAar = project.file(".gradle/downloaded-sdk/NuanceSpeechAnywhere-${speechKitAarRef}.aar")
+
+if (!downloadedSpeechKitAar.isFile()) {
+    downloadedSpeechKitAar.parentFile.mkdirs()
+    def temporarySpeechKitAar = new File(downloadedSpeechKitAar.parentFile, "${downloadedSpeechKitAar.name}.download")
+    def connection = new URL(speechKitAarUrl).openConnection()
+    connection.connectTimeout = 15000
+    connection.readTimeout = 60000
+
+    try {
+        if (connection instanceof java.net.HttpURLConnection) {
+            connection.connect()
+            if (connection.responseCode != 200) {
+                throw new GradleException("Failed to download SpeechKit AAR: HTTP ${connection.responseCode}")
+            }
+        }
+
+        connection.inputStream.withCloseable { input ->
+            temporarySpeechKitAar.withOutputStream { output ->
+                output << input
+            }
+        }
+
+        if (!temporarySpeechKitAar.renameTo(downloadedSpeechKitAar)) {
+            throw new GradleException('Failed to store the downloaded SpeechKit AAR')
+        }
+    } catch (Exception exception) {
+        temporarySpeechKitAar.delete()
+        throw new GradleException("Could not download SpeechKit AAR from ${speechKitAarUrl}", exception)
+    } finally {
+        if (connection instanceof java.net.HttpURLConnection) {
+            connection.disconnect()
+        }
+    }
+}
+
+project.ext.speechKitAarFile = downloadedSpeechKitAar

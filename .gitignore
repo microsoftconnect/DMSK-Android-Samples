@@ -3,6 +3,27 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Android Studio / Gradle generated files
+.gradle/
+.idea/
+.kotlin/
+.cxx/
+.externalNativeBuild/
+build/
+intermediates/
+gen/
+captures/
+*.iml
+*.ipr
+*.iws
+local.properties
+.DS_Store
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+
 # User-specific files
 *.rsuser
 *.suo
